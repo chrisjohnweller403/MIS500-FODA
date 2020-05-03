@@ -1,0 +1,301 @@
+NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.05 seconds
+      cpu time            0.03 seconds
+      
+
+95         
+96         proc datasets lib=work nolist kill;
+NOTE: Deleting WORK.DOMAIN_RESULTS (memtype=DATA).
+NOTE: Deleting WORK.FORMATS (memtype=CATALOG).
+NOTE: Deleting WORK.OVERALL_RESULTS (memtype=DATA).
+NOTE: Deleting WORK.PUF201 (memtype=DATA).
+NOTE: Deleting WORK.REGSTRY (memtype=ITEMSTOR).
+NOTE: File WORK.REGSTRY (memtype=ITEMSTOR) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SASGOPT (memtype=CATALOG).
+NOTE: File WORK.SASGOPT (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SASMAC1 (memtype=CATALOG).
+NOTE: File WORK.SASMAC1 (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SASMAC2 (memtype=CATALOG).
+NOTE: Deleting WORK.SASMAC4 (memtype=CATALOG).
+NOTE: Deleting WORK.SASMACR (memtype=CATALOG).
+NOTE: File WORK.SASMACR (memtype=CATALOG) cannot be deleted because it is in use.
+96       !                                     quit;
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+96       !                                           /* delete  all files in the WORK library */
+97         libname CDATA "/folders/myfolders/SASDATA";
+NOTE: Libref CDATA refers to the same physical library as MYSASLIB.
+NOTE: Libref CDATA was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: /folders/myfolders/SASDATA
+98         
+99         PROC FORMAT;
+100        
+101        	
+101      !  Value  TOTALCAT
+102        	.			= 	'All Totals'
+103        	0- 9999		= 	'$0 to $9,999'
+104        	10000-19999	= 	'$10,000 to $19,999'
+105        	20000-29999	=	'$20,000 to $29,999'
+106        	30000-39999	=	'$30,000 to $39,999'
+107        	40000-49999	=	'$40,000 to $49,999'
+108        	50000-HIGH	=	'Above $50,000';
+NOTE: Format TOTALCAT has been output.
+109        	
+110          VALUE AGEF
+111             .      = 'ALL AGES'
+112             0-  9  = '0 to 9'
+113             10- 19 = '10 to 19'
+2                                                          The SAS System
+
+114             20- 29 = '20 to 29'
+115             30- 39 = '30 to 39'
+116             40- 49 = '40 to 49'
+117             50- 59 = '50 to 59'
+118             60- 69 = '60 to 69'
+119             70- 79 = '70 to 79'
+120             80- 89 = '80 to 89'
+121             90-HIGH = '90+';
+NOTE: Format AGEF has been output.
+122        
+123        
+124          VALUE AGECAT
+125              .      = 'ALL AGES'
+126        	   1 = '0 to 9'
+127        	   2 = '10 to 19'
+128        	   3 = '20 to 29'
+129        	   4 = '30 to 39'
+130        	   5 = '40 to 49'
+131        	   6 = '50 to 59'
+132        	   7 = '60 to 69'
+133        	   8 = '70 to 79'
+134        	   9 = '80 to 89'
+135        	  10 = '90+';
+NOTE: Format AGECAT has been output.
+136        	
+137        
+138          VALUE GTZERO
+139             0         = '0'
+140             0 <- HIGH = '>0';
+NOTE: Format GTZERO has been output.
+141        
+142          VALUE FLAG
+143              .         = 'No or any expense'
+144              0         = 'No expense'
+145              1         = 'Any expense';
+NOTE: Format FLAG has been output.
+146        
+147        RUN;
+
+NOTE: PROCEDURE FORMAT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+148        
+149        TITLE1 '2020 MIS500 Christopher Weller Module 8 Project';
+150        TITLE2 "National Health Care Expenses, 2017";
+151        
+152        /* READ IN DATA FROM 2017 CONSOLIDATED DATA FILE (HC-201) */
+153        DATA PUF201;
+154          SET CDATA.H201 (KEEP= TOTEXP17 AGE17X AGE42X AGE31X
+155        	                      VARSTR   VARPSU   PERWT17F );
+156        
+157          TOTAL                = TOTEXP17;
+158        
+159          /* CREATE FLAG (1/0) VARIABLES FOR PERSONS WITH AN EXPENSE */
+160          Expense_Status=0;
+161          IF TOTAL > 0 THEN Expense_Status=1;
+162        
+163          /* CREATE A SUMMARY VARIABLE FROM END OF YEAR, 42, AND 31 VARIABLES*/
+164        
+165               IF AGE17X >= 0 THEN AGE = AGE17X ;
+166          ELSE IF AGE42X >= 0 THEN AGE = AGE42X ;
+167          ELSE IF AGE31X >= 0 THEN AGE = AGE31X ;
+168        
+169               IF 0 LE AGE LE 9 THEN AGECAT=1 ;
+170          ELSE IF 10 LE AGE LE 19 THEN AGECAT=2 ;
+171          ELSE IF 20 LE AGE LE 29 THEN AGECAT=3 ;
+172          ELSE IF 30 LE AGE LE 39 THEN AGECAT=4 ;
+173          ELSE IF 40 LE AGE LE 49 THEN AGECAT=5 ;
+174          ELSE IF 50 LE AGE LE 59 THEN AGECAT=6 ;
+175          ELSE IF 60 LE AGE LE 69 THEN AGECAT=7 ;
+176          ELSE IF 70 LE AGE LE 79 THEN AGECAT=8 ;
+177          ELSE IF 80 LE AGE LE 89 THEN AGECAT=9 ;
+178          ELSE IF     AGE > 90 THEN AGECAT=10 ;
+179        RUN;
+
+3                                                          The SAS System
+
+NOTE: There were 31880 observations read from the data set CDATA.H201.
+NOTE: The data set WORK.PUF201 has 31880 observations and 11 variables.
+NOTE: DATA statement used (Total process time):
+      real time           1.31 seconds
+      cpu time            0.63 seconds
+      
+
+180        
+181        ods exclude none ; /* Unsuppress the printing of output */
+182        
+183        Proc univariate data=puf201;
+184        	VAR AGE;
+185        	Histogram AGE/Normal;
+186        Run;
+
+WARNING: GPATH or PATH is not a writable directory. It will be ignored.
+ERROR: Cannot write image to SlantFactor. Please ensure that proper disk permissions are set.
+ERROR: Cannot write image to SlantFactor. Please ensure that proper disk permissions are set.
+NOTE: The SAS System stopped processing this step because of errors.
+NOTE: The PROCEDURE UNIVARIATE printed page 1.
+NOTE: PROCEDURE UNIVARIATE used (Total process time):
+      real time           0.86 seconds
+      cpu time            0.45 seconds
+      
+187        
+188        
+189        TITLE3 "Respondants with 2017 Health Expenses";
+
+
+190        PROC FREQ DATA=PUF201;
+191           TABLES 	Expense_Status*AGE
+192           			AGECAT*AGE
+193           			/LIST MISSING;
+194             FORMAT TOTAL        		GTZERO.
+195                  	AGE            		AGEF.
+196                  	Expense_Status		FLAG.;
+197        RUN;
+
+NOTE: There were 31880 observations read from the data set WORK.PUF201.
+NOTE: The PROCEDURE FREQ printed page 2.
+NOTE: PROCEDURE FREQ used (Total process time):
+      real time           0.14 seconds
+      cpu time            0.11 seconds
+      
+
+198        
+199        Title3 'Chi Square Analysis of people with an expense, by AGE';
+200        PROC FREQ DATA=PUF201; WEIGHT Expense_Status;
+201        	TABLES Total*AGE/CHISQ;
+202        	Format 	AGE				AGEF.
+203        			Total			TotalCAT.;
+204        Run;
+
+NOTE: There were 31880 observations read from the data set WORK.PUF201.
+NOTE: The PROCEDURE FREQ printed page 3.
+NOTE: PROCEDURE FREQ used (Total process time):
+      real time           0.22 seconds
+      cpu time            0.22 seconds
+      
+
+205        
+206        Title3 'Correlation between AGE and Total Expense';
+207        PROC CORR Data=puf201;
+208        	VAR AGE17X TOTEXP17;
+209        RUN;
+
+NOTE: The PROCEDURE CORR printed page 4.
+NOTE: PROCEDURE CORR used (Total process time):
+      real time           0.07 seconds
+      cpu time            0.06 seconds
+      
+
+210        
+211        ods graphics off;
+212        ods exclude all; /*Suppress the printing of output */
+213        
+214        
+4                                                          The SAS System
+
+215        TITLE3 '2017 People with an expense';
+216        PROC SURVEYMEANS DATA=PUF201 MEAN NOBS SUMWGT STDERR SUM STD;
+217        	STRATUM VARSTR;
+218        	CLUSTER VARPSU;
+219        	WEIGHT PERWT17F;
+220        	VAR  Expense_Status TOTAL ;
+221        	ods output Statistics=work.Overall_results;
+222        RUN;
+
+NOTE: Due to nonpositive weights, 1164 observation(s) were deleted.
+NOTE: The data set WORK.OVERALL_RESULTS has 2 observations and 7 variables.
+NOTE: PROCEDURE SURVEYMEANS used (Total process time):
+      real time           0.07 seconds
+      cpu time            0.08 seconds
+      
+
+223        
+224        ods exclude none ; /* Unsuppress the printing of output */
+225        
+226        ods exclude all; /* suspend all destinations */
+227        TITLE3 '2017 Age Categorization Statistics';
+228        PROC SURVEYMEANS DATA= PUF201 MEAN NOBS SUMWGT STDERR SUM STD;
+229        	STRATUM VARSTR ;
+230        	CLUSTER VARPSU ;
+231        	WEIGHT  PERWT17F ;
+232        	VAR  TOTAL;
+233        	DOMAIN Expense_Status('1')  Expense_Status('1')*AGECAT ;
+234        	FORMAT  AGECAT agecat.;
+235        	ods output domain= work.domain_results;
+236        RUN;
+
+NOTE: Due to nonpositive weights, 1164 observation(s) were deleted.
+NOTE: Only one cluster in a stratum for Expense_Status domains for variable(s) TOTAL. The estimate of variance for TOTAL will omit 
+      this stratum.
+NOTE: Only one cluster in a stratum for Expense_Status*AGECAT domains for variable(s) TOTAL. The estimate of variance for TOTAL 
+      will omit this stratum.
+NOTE: The data set WORK.DOMAIN_RESULTS has 10 observations and 10 variables.
+NOTE: PROCEDURE SURVEYMEANS used (Total process time):
+      real time           0.27 seconds
+      cpu time            0.26 seconds
+      
+
+237        
+238        ods exclude none ; /* Unsuppress the printing of output */
+239        proc print data= work.domain_results noobs split='*';
+240         var AGECAT  N  SumWgt  mean StdErr  Sum stddev;
+241         label N		= 'Number*of People*with*Expenses'	
+242         	   AGECAT 	= 'Age Group'
+243               SumWgt 	= 'US Population*Size*with*Expenses'
+244               mean 	= 'Mean*of *Total*Expenses($)'
+245               StdErr 	= 'Standard Error of *Mean of*Total*Expenses($)'
+246               Sum 		= 'US Total*Expenses ($)'
+247               Stddev 	= 'Standard Error of* US Total*Expenses($)';
+248               format AGECAT agecat. N SumWgt Comma12. mean comma9.2 stderr 9.2
+249                      sum Stddev comma17.;
+250        run;
+
+NOTE: There were 10 observations read from the data set WORK.DOMAIN_RESULTS.
+NOTE: The PROCEDURE PRINT printed page 5.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.05 seconds
+      cpu time            0.05 seconds
+      
+
+251        
+252        TITLE3 'ANOVA Analysis of 2017 Total Expense Mean by AGE Category';
+253        PROC ANOVA DATA=puf201;
+254        	CLASS AGECAT;
+255        	MODEL TOTAL=AGECAT;
+256        	MEANS AGECAT/TUKEY;
+257        	Format AGECAT AGECAT.;
+258        run;
+
+259        
+260        ODS _ALL_ CLOSE;
+NOTE: ODS PDF(WEB) printed 12 pages to /tmp/SAS_workE41000004B39_localhost.localdomain/#LN00442.
+261        /* THE PROC PRINTTO null step is required to close the PROC PRINTTO */
+5                                                          The SAS System
+
+
+NOTE: The PROCEDURE ANOVA printed pages 6-9.
+NOTE: PROCEDURE ANOVA used (Total process time):
+      real time           0.32 seconds
+      cpu time            0.32 seconds
+      
+
+262        PROC PRINTTO;
+263        RUN;
+

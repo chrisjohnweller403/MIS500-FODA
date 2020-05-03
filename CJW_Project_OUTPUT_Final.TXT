@@ -1,0 +1,363 @@
+                                          2020 MIS500 Christopher Weller Module 8 Project                                          1
+                                                National Health Care Expenses, 2017
+
+                                                      The UNIVARIATE Procedure
+                                                           Variable:  AGE
+
+                                                              Moments
+
+                                  N                       31880    Sum Weights              31880
+                                  Mean               37.8092848    Sum Observations       1205360
+                                  Std Deviation      23.3058005    Variance            543.160339
+                                  Skewness           0.17629442    Kurtosis            -1.0579073
+                                  Uncorrected SS       62889208    Corrected SS        17315408.5
+                                  Coeff Variation    61.6404163    Std Error Mean      0.13052836
+
+
+                                                     Basic Statistical Measures
+ 
+                                           Location                    Variability
+
+                                       Mean     37.80928     Std Deviation           23.30580
+                                       Median   37.00000     Variance               543.16034
+                                       Mode     85.00000     Range                   85.00000
+                                                             Interquartile Range     40.00000
+
+
+                                                     Tests for Location: Mu0=0
+ 
+                                          Test           -Statistic-    -----p Value------
+
+                                          Student's t    t  289.6634    Pr > |t|    <.0001
+                                          Sign           M   15769.5    Pr >= |M|   <.0001
+                                          Signed Rank    S  2.4869E8    Pr >= |S|   <.0001
+
+
+                                                      Quantiles (Definition 5)
+ 
+                                                       Level         Quantile
+
+                                                       100% Max            85
+                                                       99%                 85
+                                                       95%                 77
+                                                       90%                 70
+                                                       75% Q3              57
+                                                       50% Median          37
+                                                       25% Q1              17
+                                                       10%                  7
+                                                       5%                   4
+                                                       1%                   0
+                                                       0% Min               0
+
+
+                                                        Extreme Observations
+ 
+                                                ----Lowest----        ----Highest---
+ 
+                                                Value      Obs        Value      Obs
+
+                                                    0    31862           85    31613
+                                                    0    31789           85    31632
+                                                    0    31738           85    31638
+                                                    0    31530           85    31683
+                                                    0    31473           85    31699
+                                          2020 MIS500 Christopher Weller Module 8 Project                                          2
+                                                National Health Care Expenses, 2017
+                                               Respondants with 2017 Health Expenses
+
+                                                         The FREQ Procedure
+
+                                                                                   Cumulative    Cumulative
+                            Expense_Status         AGE    Frequency     Percent     Frequency      Percent
+                         ----------------------------------------------------------------------------------
+                         No expense           0 to 9           633        1.99           633         1.99  
+                         No expense           10 to 19         975        3.06          1608         5.04  
+                         No expense           20 to 29        1265        3.97          2873         9.01  
+                         No expense           30 to 39        1123        3.52          3996        12.53  
+                         No expense           40 to 49         846        2.65          4842        15.19  
+                         No expense           50 to 59         577        1.81          5419        17.00  
+                         No expense           60 to 69         276        0.87          5695        17.86  
+                         No expense           70 to 79          85        0.27          5780        18.13  
+                         No expense           80 to 89          44        0.14          5824        18.27  
+                         Any expense          0 to 9          3718       11.66          9542        29.93  
+                         Any expense          10 to 19        3694       11.59         13236        41.52  
+                         Any expense          20 to 29        2646        8.30         15882        49.82  
+                         Any expense          30 to 39        2977        9.34         18859        59.16  
+                         Any expense          40 to 49        3092        9.70         21951        68.86  
+                         Any expense          50 to 59        3532       11.08         25483        79.93  
+                         Any expense          60 to 69        3191       10.01         28674        89.94  
+                         Any expense          70 to 79        2080        6.52         30754        96.47  
+                         Any expense          80 to 89        1126        3.53         31880       100.00  
+
+
+                                                                             Cumulative    Cumulative
+                              AGECAT         AGE    Frequency     Percent     Frequency      Percent
+                              -----------------------------------------------------------------------
+                                   1    0 to 9          4351       13.65          4351        13.65  
+                                   2    10 to 19        4669       14.65          9020        28.29  
+                                   3    20 to 29        3911       12.27         12931        40.56  
+                                   4    30 to 39        4100       12.86         17031        53.42  
+                                   5    40 to 49        3938       12.35         20969        65.77  
+                                   6    50 to 59        4109       12.89         25078        78.66  
+                                   7    60 to 69        3467       10.88         28545        89.54  
+                                   8    70 to 79        2165        6.79         30710        96.33  
+                                   9    80 to 89        1170        3.67         31880       100.00  
+                                          2020 MIS500 Christopher Weller Module 8 Project                                          3
+                                                National Health Care Expenses, 2017
+                                       Chi Square Analysis of people with an expense, by AGE
+
+                                                         The FREQ Procedure
+
+                                                       Table of TOTAL by AGE
+
+             TOTAL             AGE
+
+             Frequency        |
+             Percent          |
+             Row Pct          |
+             Col Pct          |0 to 9  |10 to 19|20 to 29|30 to 39|40 to 49|50 to 59|60 to 69|70 to 79|80 to 89|  Total
+             -----------------+--------+--------+--------+--------+--------+--------+--------+--------+--------+
+             $0 to $9,999     |   3582 |   3529 |   2438 |   2650 |   2744 |   2853 |   2412 |   1448 |    668 |  22324
+                              |  13.75 |  13.54 |   9.36 |  10.17 |  10.53 |  10.95 |   9.26 |   5.56 |   2.56 |  85.68
+                              |  16.05 |  15.81 |  10.92 |  11.87 |  12.29 |  12.78 |  10.80 |   6.49 |   2.99 |
+                              |  96.34 |  95.53 |  92.14 |  89.02 |  88.75 |  80.78 |  75.59 |  69.62 |  59.33 |
+             -----------------+--------+--------+--------+--------+--------+--------+--------+--------+--------+
+             $10,000 to $19,9 |     64 |    106 |    140 |    185 |    164 |    359 |    378 |    325 |    198 |   1919
+             99               |   0.25 |   0.41 |   0.54 |   0.71 |   0.63 |   1.38 |   1.45 |   1.25 |   0.76 |   7.36
+                              |   3.34 |   5.52 |   7.30 |   9.64 |   8.55 |  18.71 |  19.70 |  16.94 |  10.32 |
+                              |   1.72 |   2.87 |   5.29 |   6.21 |   5.30 |  10.16 |  11.85 |  15.63 |  17.58 |
+             -----------------+--------+--------+--------+--------+--------+--------+--------+--------+--------+
+             $20,000 to $29,9 |     24 |     25 |     32 |     63 |     71 |    101 |    156 |    128 |     96 |    696
+             99               |   0.09 |   0.10 |   0.12 |   0.24 |   0.27 |   0.39 |   0.60 |   0.49 |   0.37 |   2.67
+                              |   3.45 |   3.59 |   4.60 |   9.05 |  10.20 |  14.51 |  22.41 |  18.39 |  13.79 |
+                              |   0.65 |   0.68 |   1.21 |   2.12 |   2.30 |   2.86 |   4.89 |   6.15 |   8.53 |
+             -----------------+--------+--------+--------+--------+--------+--------+--------+--------+--------+
+             $30,000 to $39,9 |     17 |     12 |     11 |     30 |     48 |     67 |     91 |     60 |     52 |    388
+             99               |   0.07 |   0.05 |   0.04 |   0.12 |   0.18 |   0.26 |   0.35 |   0.23 |   0.20 |   1.49
+                              |   4.38 |   3.09 |   2.84 |   7.73 |  12.37 |  17.27 |  23.45 |  15.46 |  13.40 |
+                              |   0.46 |   0.32 |   0.42 |   1.01 |   1.55 |   1.90 |   2.85 |   2.88 |   4.62 |
+             -----------------+--------+--------+--------+--------+--------+--------+--------+--------+--------+
+             $40,000 to $49,9 |      9 |      8 |      6 |     17 |     22 |     41 |     41 |     33 |     37 |    214
+             99               |   0.03 |   0.03 |   0.02 |   0.07 |   0.08 |   0.16 |   0.16 |   0.13 |   0.14 |   0.82
+                              |   4.21 |   3.74 |   2.80 |   7.94 |  10.28 |  19.16 |  19.16 |  15.42 |  17.29 |
+                              |   0.24 |   0.22 |   0.23 |   0.57 |   0.71 |   1.16 |   1.28 |   1.59 |   3.29 |
+             -----------------+--------+--------+--------+--------+--------+--------+--------+--------+--------+
+             Above $50,000    |     22 |     14 |     19 |     32 |     43 |    111 |    113 |     86 |     75 |    515
+                              |   0.08 |   0.05 |   0.07 |   0.12 |   0.17 |   0.43 |   0.43 |   0.33 |   0.29 |   1.98
+                              |   4.27 |   2.72 |   3.69 |   6.21 |   8.35 |  21.55 |  21.94 |  16.70 |  14.56 |
+                              |   0.59 |   0.38 |   0.72 |   1.07 |   1.39 |   3.14 |   3.54 |   4.13 |   6.66 |
+             -----------------+--------+--------+--------+--------+--------+--------+--------+--------+--------+
+             Total                3718     3694     2646     2977     3092     3532     3191     2080     1126    26056
+                                 14.27    14.18    10.16    11.43    11.87    13.56    12.25     7.98     4.32   100.00
+
+
+                                                Statistics for Table of TOTAL by AGE
+
+                                       Statistic                     DF       Value      Prob
+                                       ------------------------------------------------------
+                                       Chi-Square                    40   2275.3034    <.0001
+                                       Likelihood Ratio Chi-Square   40   2196.2543    <.0001
+                                       Mantel-Haenszel Chi-Square     1   1467.5421    <.0001
+                                       Phi Coefficient                       0.2955          
+                                       Contingency Coefficient               0.2834          
+                                       Cramer's V                            0.1322          
+
+                                                        Sample Size = 26056
+                                          2020 MIS500 Christopher Weller Module 8 Project                                          4
+                                                National Health Care Expenses, 2017
+                                             Correlation between AGE and Total Expense
+
+                                                         The CORR Procedure
+
+                                                  2  Variables:    AGE17X   TOTEXP17 
+
+
+                                                         Simple Statistics
+ 
+ Variable           N          Mean       Std Dev           Sum       Minimum       Maximum    Label
+
+ AGE17X         31880      37.43802      23.37633       1193524      -1.00000      85.00000    AGE AS OF 12/31/17 (EDITED/IMPUTED)
+ TOTEXP17       31880          4995         15310     159225031             0        552898    TOTAL HEALTH CARE EXP 17           
+
+
+                                           Pearson Correlation Coefficients, N = 31880 
+                                                    Prob > |r| under H0: Rho=0
+ 
+                                                                             AGE17X      TOTEXP17
+
+                                  AGE17X                                    1.00000       0.20980
+                                  AGE AS OF 12/31/17 (EDITED/IMPUTED)                      <.0001
+
+                                  TOTEXP17                                  0.20980       1.00000
+                                  TOTAL HEALTH CARE EXP 17                   <.0001              
+                                          2020 MIS500 Christopher Weller Module 8 Project                                          5
+                                                National Health Care Expenses, 2017
+                                                 2017 Age Categorization Statistics
+
+                        Number    US Population       Mean        Standard Error of 
+                     of People        Size             of              Mean of                               Standard Error of
+        Age               with        with            Total             Total                    US Total         US Total
+       Group          Expenses      Expenses       Expenses($)       Expenses($)             Expenses ($)       Expenses($)
+
+      ALL AGES          25,356     276,844,299       6,224.22            147.05         1,723,140,028,956       46,588,497,185
+      0 to 9             3,602      35,407,853       2,983.11            465.71           105,625,595,445       16,784,300,610
+      10 to 19           3,603      35,250,980       2,731.11            180.44            96,274,217,216        6,867,784,867
+      20 to 29           2,492      32,162,525       3,129.52            165.38           100,653,233,967        6,339,754,918
+      30 to 39           2,878      32,754,296       4,454.86            211.66           145,915,850,431        8,262,393,016
+      40 to 49           3,023      33,386,232       5,681.62            400.02           189,687,934,612       13,836,023,388
+      50 to 59           3,452      38,625,960       7,715.95            347.16           298,035,857,537       15,073,938,234
+      60 to 69           3,141      34,988,882      10,025.29            427.40           350,773,523,792       18,107,771,319
+      70 to 79           2,057      22,101,923      11,246.90            475.97           248,578,050,706       12,980,487,933
+      80 to 89           1,108      12,165,648      15,420.12            777.15           187,595,765,250       12,766,511,331
+                                          2020 MIS500 Christopher Weller Module 8 Project                                          6
+                                                National Health Care Expenses, 2017
+                                     ANOVA Analysis of 2017 Total Expense Mean by AGE Category
+
+                                                        The ANOVA Procedure
+
+                                                      Class Level Information
+ 
+              Class         Levels    Values
+
+              AGECAT             9    0 to 9 10 to 19 20 to 29 30 to 39 40 to 49 50 to 59 60 to 69 70 to 79 80 to 89 
+
+
+                                              Number of Observations Read       31880
+                                              Number of Observations Used       31880
+                                          2020 MIS500 Christopher Weller Module 8 Project                                          7
+                                                National Health Care Expenses, 2017
+                                     ANOVA Analysis of 2017 Total Expense Mean by AGE Category
+
+                                                        The ANOVA Procedure
+ 
+                                                    Dependent Variable: TOTAL   
+
+                                                                Sum of
+                        Source                      DF         Squares     Mean Square    F Value    Pr > F
+
+                        Model                        8    397146673357     49643334170     223.62    <.0001
+
+                        Error                    31871    7.0751855E12    221994463.47                     
+
+                        Corrected Total          31879    7.4723322E12                                     
+
+
+                                         R-Square     Coeff Var      Root MSE    TOTAL Mean
+
+                                         0.053149      298.3170      14899.48      4994.512
+
+
+                        Source                      DF        Anova SS     Mean Square    F Value    Pr > F
+
+                        AGECAT                       8    397146673357     49643334170     223.62    <.0001
+                                          2020 MIS500 Christopher Weller Module 8 Project                                          8
+                                                National Health Care Expenses, 2017
+                                     ANOVA Analysis of 2017 Total Expense Mean by AGE Category
+
+                                                        The ANOVA Procedure
+ 
+                                           Tukey's Studentized Range (HSD) Test for TOTAL
+
+                                   NOTE: This test controls the Type I experimentwise error rate.
+
+
+                                            Alpha                                   0.05
+                                            Error Degrees of Freedom               31871
+                                            Error Mean Square                   2.2199E8
+                                            Critical Value of Studentized Range  4.38681
+
+
+                                  Comparisons significant at the 0.05 level are indicated by ***.
+ 
+ 
+                                                          Difference
+                                         AGECAT              Between      Simultaneous 95%
+                                       Comparison              Means     Confidence Limits
+
+                                   80 to 89 - 70 to 79        3804.1       2127.2    5481.1  ***
+                                   80 to 89 - 60 to 69        5104.5       3541.9    6667.1  ***
+                                   80 to 89 - 50 to 59        7819.3       6287.8    9350.8  ***
+                                   80 to 89 - 40 to 49       10303.9       8765.1   11842.8  ***
+                                   80 to 89 - 30 to 39       11419.9       9888.0   12951.8  ***
+                                   80 to 89 - 20 to 29       12469.5      10929.4   14009.6  ***
+                                   80 to 89 - 0 to 9         12669.5      11147.5   14191.5  ***
+                                   80 to 89 - 10 to 19       12704.0      11193.0   14215.0  ***
+                                   70 to 79 - 80 to 89       -3804.1      -5481.1   -2127.2  ***
+                                   70 to 79 - 60 to 69        1300.3         34.3    2566.3  ***
+                                   70 to 79 - 50 to 59        4015.2       2787.8    5242.6  ***
+                                   70 to 79 - 40 to 49        6499.8       5263.2    7736.3  ***
+                                   70 to 79 - 30 to 39        7615.7       6387.9    8843.6  ***
+                                   70 to 79 - 20 to 29        8665.3       7427.3    9903.4  ***
+                                   70 to 79 - 0 to 9          8865.4       7649.8   10080.9  ***
+                                   70 to 79 - 10 to 19        8899.8       7698.1   10101.6  ***
+                                   60 to 69 - 80 to 89       -5104.5      -6667.1   -3541.9  ***
+                                   60 to 69 - 70 to 79       -1300.3      -2566.3     -34.3  ***
+                                   60 to 69 - 50 to 59        2714.9       1649.0    3780.7  ***
+                                   60 to 69 - 40 to 49        5199.5       4123.1    6275.8  ***
+                                   60 to 69 - 30 to 39        6315.4       5249.1    7381.8  ***
+                                   60 to 69 - 20 to 29        7365.0       6286.9    8443.1  ***
+                                   60 to 69 - 0 to 9          7565.0       6512.9    8617.2  ***
+                                   60 to 69 - 10 to 19        7599.5       6563.4    8635.7  ***
+                                   50 to 59 - 80 to 89       -7819.3      -9350.8   -6287.8  ***
+                                   50 to 59 - 70 to 79       -4015.2      -5242.6   -2787.8  ***
+                                   50 to 59 - 60 to 69       -2714.9      -3780.7   -1649.0  ***
+                                   50 to 59 - 40 to 49        2484.6       1454.0    3515.3  ***
+                                   50 to 59 - 30 to 39        3600.6       2580.3    4620.8  ***
+                                   50 to 59 - 20 to 29        4650.2       3617.7    5682.6  ***
+                                   50 to 59 - 0 to 9          4850.2       3844.8    5855.5  ***
+                                   50 to 59 - 10 to 19        4884.7       3896.1    5873.3  ***
+                                   40 to 49 - 80 to 89      -10303.9     -11842.8   -8765.1  ***
+                                   40 to 49 - 70 to 79       -6499.8      -7736.3   -5263.2  ***
+                                   40 to 49 - 60 to 69       -5199.5      -6275.8   -4123.1  ***
+                                   40 to 49 - 50 to 59       -2484.6      -3515.3   -1454.0  ***
+                                   40 to 49 - 30 to 39        1115.9         84.7    2147.2  ***
+                                   40 to 49 - 20 to 29        2165.6       1122.2    3208.9  ***
+                                   40 to 49 - 0 to 9          2365.6       1349.0    3382.1  ***
+                                   40 to 49 - 10 to 19        2400.0       1400.1    3400.0  ***
+                                   30 to 39 - 80 to 89      -11419.9     -12951.8   -9888.0  ***
+                                   30 to 39 - 70 to 79       -7615.7      -8843.6   -6387.9  ***
+                                   30 to 39 - 60 to 69       -6315.4      -7381.8   -5249.1  ***
+                                   30 to 39 - 50 to 59       -3600.6      -4620.8   -2580.3  ***
+                                   30 to 39 - 40 to 49       -1115.9      -2147.2     -84.7  ***
+                                   30 to 39 - 20 to 29        1049.6         16.6    2082.6  ***
+                                   30 to 39 - 0 to 9          1249.6        243.7    2255.6  ***
+                                   30 to 39 - 10 to 19        1284.1        294.9    2273.3  ***
+                                   20 to 29 - 80 to 89      -12469.5     -14009.6  -10929.4  ***
+                                   20 to 29 - 70 to 79       -8665.3      -9903.4   -7427.3  ***
+                                   20 to 29 - 60 to 69       -7365.0      -8443.1   -6286.9  ***
+                                   20 to 29 - 50 to 59       -4650.2      -5682.6   -3617.7  ***
+                                   20 to 29 - 40 to 49       -2165.6      -3208.9   -1122.2  ***
+                                   20 to 29 - 30 to 39       -1049.6      -2082.6     -16.6  ***
+                                   20 to 29 - 0 to 9           200.0       -818.4    1218.4     
+                                          2020 MIS500 Christopher Weller Module 8 Project                                          9
+                                                National Health Care Expenses, 2017
+                                     ANOVA Analysis of 2017 Total Expense Mean by AGE Category
+
+                                                        The ANOVA Procedure
+ 
+                                           Tukey's Studentized Range (HSD) Test for TOTAL
+
+                                  Comparisons significant at the 0.05 level are indicated by ***.
+ 
+ 
+                                                          Difference
+                                         AGECAT              Between      Simultaneous 95%
+                                       Comparison              Means     Confidence Limits
+
+                                   20 to 29 - 10 to 19         234.5       -767.3    1236.3     
+                                   0 to 9   - 80 to 89      -12669.5     -14191.5  -11147.5  ***
+                                   0 to 9   - 70 to 79       -8865.4     -10080.9   -7649.8  ***
+                                   0 to 9   - 60 to 69       -7565.0      -8617.2   -6512.9  ***
+                                   0 to 9   - 50 to 59       -4850.2      -5855.5   -3844.8  ***
+                                   0 to 9   - 40 to 49       -2365.6      -3382.1   -1349.0  ***
+                                   0 to 9   - 30 to 39       -1249.6      -2255.6    -243.7  ***
+                                   0 to 9   - 20 to 29        -200.0      -1218.4     818.4     
+                                   0 to 9   - 10 to 19          34.5       -939.4    1008.4     
+                                   10 to 19 - 80 to 89      -12704.0     -14215.0  -11193.0  ***
+                                   10 to 19 - 70 to 79       -8899.8     -10101.6   -7698.1  ***
+                                   10 to 19 - 60 to 69       -7599.5      -8635.7   -6563.4  ***
+                                   10 to 19 - 50 to 59       -4884.7      -5873.3   -3896.1  ***
+                                   10 to 19 - 40 to 49       -2400.0      -3400.0   -1400.1  ***
+                                   10 to 19 - 30 to 39       -1284.1      -2273.3    -294.9  ***
+                                   10 to 19 - 20 to 29        -234.5      -1236.3     767.3     
+                                   10 to 19 - 0 to 9           -34.5      -1008.4     939.4     
